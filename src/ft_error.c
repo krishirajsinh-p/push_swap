@@ -6,11 +6,11 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:17:29 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/03/07 05:30:02 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/19 22:11:43 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../lib/libft/libft.h"
 
 void	ft_error(const t_string msg)
 {

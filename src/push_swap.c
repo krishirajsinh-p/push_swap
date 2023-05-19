@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/03/08 01:54:33 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/19 22:09:24 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,18 @@ int	main(int argc, t_string argv[])
 	return (EXIT_SUCCESS);
 }
 
-//if leaks make all typedef and struct null
+/*
+stack
+-a elements from argument, first argument at top
+-b empty
+
+parsing
+-no parameters then exit without any output
+-no duplicates
+-check if all are number
+-check if all are int within int range
+
+output
+-operations with '\n'
+-cases of error output "Error\n" on stderr
+*/

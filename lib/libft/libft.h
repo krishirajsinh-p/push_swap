@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 09:38:52 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/03/07 01:56:34 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/04/28 15:29:01 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,5 @@ int		ft_putstr(char *s);
 //minitalk
 
 typedef char *	t_string;
-
-//push_swap
-
-void	ft_error(const t_string msg);
 
 #endif

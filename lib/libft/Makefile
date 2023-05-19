@@ -6,7 +6,7 @@
 #    By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 21:08:59 by kpuwar            #+#    #+#              #
-#    Updated: 2023/03/07 03:14:47 by kpuwar           ###   ########.fr        #
+#    Updated: 2023/04/28 15:29:29 by kpuwar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ SRCS = 	ft_isalpha.c	\
 		ft_putstr_fd.c	\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
-		ft_error.c		\
 		get_next_line.c	\
 		ft_printf.c		\
 		ft_printf_utils.c

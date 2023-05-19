@@ -6,14 +6,14 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:18:22 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/03/08 21:24:47 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/04/28 15:36:01 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../../lib/libft.h"
+# include "../../lib/libft/libft.h"
 
 # define ERROR_MSG "Error\n"
 
