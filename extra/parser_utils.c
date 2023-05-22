@@ -1,19 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 01:17:29 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/19 22:11:43 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/03/08 21:16:21 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/21 18:20:41 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../lib/libft/libft.h"
+#include "include/push_swap.h"
 
-void	ft_error(const t_string msg)
-{
-	ft_putstr_fd(msg, 2);
-	exit(EXIT_FAILURE);
-}

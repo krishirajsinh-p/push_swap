@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/21 21:50:08 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/03/07 01:17:29 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/21 18:22:41 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
 
-int	main(int argc, t_string argv[])
+void	throw_error(void)
 {
-	t_data	stack;
-
-	parse(argc, argv, &stack);
-	return (EXIT_SUCCESS);
+	ft_error(NULL);
 }
 
-	//init_data(&stack);
-	// atexit("leaks push_swap");
+void	ft_error(t_data *recv_data)
+{
+	static t_data	*data;
+
+	if (recv_data && data == NULL)
+		data = recv_data;
+	else
+	{
+		ft_putendl_fd("ERROR\n", 2);
+		//free data here
+		data = NULL;
+		exit(EXIT_FAILURE);
+	}
+}

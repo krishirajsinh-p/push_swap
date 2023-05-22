@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:18:22 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/04/28 15:36:01 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/21 21:55:53 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,31 @@
 
 # include "../../lib/libft/libft.h"
 
-# define ERROR_MSG "Error\n"
+typedef struct s_array
+{
+	unsigned short	size;
+	int				*array;
+}					t_array;
 
-typedef t_list	t_stack;
+typedef struct s_node
+{
+	int				data;
+	int				ideal_index;
+	struct s_node	*next;
+}					t_node;
 
-// typedef struct s_array
-// {
-// 	size_t	size;
-// 	void	*array;
-// }	t_array;
+typedef struct s_stack
+{
+	int				size;
+	t_node			*top;
+}					t_stack;
 
-//praser.c
-bool	parse(int argc, t_string argv[]);
+typedef struct s_data
+{
+	t_stack			a;
+	t_stack			b;
+}					t_data;
 
-//operations.c
-void	swap(t_stack **ptr);
-void	push(t_stack **to, t_stack **from);
-void	rotate(t_stack **ptr);
-void	reverse_rotate(t_stack **ptr);
-
-//praser_utils.c
-unsigned short	count_nums(char **nums);
-bool	ft_stoi(t_string str, int *num);
-bool	check_dup(int *arr, int size);
-void	free_split(t_string nums[]);
+void			parse(int argc, t_string argv[], t_data *stack);
 
 #endif

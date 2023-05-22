@@ -6,13 +6,13 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:51:02 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/03/07 05:07:06 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/20 18:58:02 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
 
-void	swap(t_stack **ptr)
+void	swap(t_stack *stack)
 {
 	t_stack	*tmp;
 
@@ -69,7 +69,7 @@ void	reverse_rotate(t_stack **ptr)
 	}
 }
 
-// void	ft_do(t_stack **a, t_stack **b, const t_string cmd)
+// void	ft_do(const t_string cmd)
 // {
 // 	if (!ft_strncmp(cmd, "sa", 2))
 // 		swap(&a);
@@ -81,20 +81,3 @@ void	reverse_rotate(t_stack **ptr)
 // 	}
 //	
 // }
-
-/*
-# define SA swap(&a);
-# define SB swap(&b);
-# define SS SA SB
-
-# define PA push(&a, &b);
-# define PB push(&b, &a);
-
-# define RA rotate(&a);
-# define RB rotate(&b);
-# define RR RA RB
-
-# define RRA reverse_rotate(&a);
-# define RRB reverse_rotate(&b);
-# define RRR RRA RRB
-*/
