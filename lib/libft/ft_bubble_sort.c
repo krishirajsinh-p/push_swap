@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_bubble_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/25 11:27:07 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/05/25 09:37:39 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/25 11:22:52 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, t_string argv[])
+void	ft_bubble_sort(t_array *array)
 {
-	t_data	stack;
+	int	temp;
+	int	i;
+	int	j;
 
-	init_data(&stack);
-	parse(argc, argv, &stack);	//if okay then do &stack.buffer
-	// fill stack a
-	// sort
-	// free_data(&stack);
-	return (EXIT_SUCCESS);
+	i = 0;
+	while (i < array->size - 1)
+	{
+		j = 0;
+		while (j < array->size - i - 1)
+		{
+			if (array->element[j] > array->element[j + 1])
+			{
+				temp = array->element[j];
+				array->element[j] = array->element[j + 1];
+				array->element[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }

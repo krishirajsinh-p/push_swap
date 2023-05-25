@@ -6,24 +6,11 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:48:02 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/21 21:55:02 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/25 11:32:14 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
-
-static void	free_split(t_string split[])
-{
-	unsigned int	i;
-
-	i = 0;
-	while (split[i] != NULL)
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
 
 static bool	ft_stoi(t_string str, int *num)
 {
@@ -60,76 +47,29 @@ static void	make_array(int argc, t_string argv[], t_array *array)
 	unsigned short	j;
 	unsigned short	k;
 	
-	array->array = ft_calloc(array->size + 1, sizeof(int));
-	if (array->array == NULL)
-		throw_error();	//exit with err_msg
+	array->element = ft_calloc(array->size + 1, sizeof(int));
+	if (array->element == NULL)
+		throw_error();
 	k = 0;
 	i = 1;
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
 		if (split == NULL)
-		{
-			free(array->array);
-			throw_error();	//if split is null then free array mem and exit with msg
+		{	//if split is null then free array mem and exit with msg
+			free(array->element);
+			throw_error();
 		}
 		j = 0;
 		while (split[j])
 		{
-			if (ft_stoi(split[j++], &array->array[k++]) == false)
-			{
-				free(array->array);
-				free_split(split);
+			if (ft_stoi(split[j++], &array->element[k++]) == false)
+			{	//if stoi is unsuccessfull free array.array and split and throws error before exit
+				free(array->element);
+				ft_free_split(split);
 				throw_error();
 			}
-			free_split(split);	
-		}
-		i++;
-	}
-}
-
-static bool	check_dup(t_array *array)
-{
-	unsigned short	i;
-	unsigned short	j;
-
-	i = 0;
-	while (i < array->size)
-	{
-		j = i + 1;
-		while (j < array->size)
-		{
-			if (array->array[i] == array->array[j])
-			{
-				free(array->array);
-				return (true);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (false);
-}
-
-static void	sort_array(t_array *array)
-{
-	int	temp;
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < array->size - 1)
-	{
-		j = 0;
-		while (j < array->size - i - 1)
-		{
-			if (array->array[j] > array->array[j + 1])
-			{
-				temp = array->array[j];
-				array->array[j] = array->array[j + 1];
-				array->array[j + 1] = temp;
-			}
-			j++;
+			ft_free_split(split);	
 		}
 		i++;
 	}
@@ -148,12 +88,12 @@ static unsigned short	count_nums(int argc, t_string argv[])
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j]))
-				if (argv[i][j + 1] == ' ' || argv[i][j + 1] == '\0')
-					count++;
-			else
-				if (argv[i][j] != ' ' && argv[i][j] != '-')
-					throw_error();
+			if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == ' '
+			|| argv[i][j + 1] == '\0')
+				count++;
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
+			&& argv[i][j] != '-')
+				throw_error(NULL);
 			j++;
 		}
 		i++;
@@ -163,19 +103,14 @@ static unsigned short	count_nums(int argc, t_string argv[])
 
 void	parse(int argc, t_string argv[], t_data *stack)
 {
-	t_array	array;
-
 	if (argc == 1)
 		exit(EXIT_FAILURE);
-	array.size = count_nums(argc, argv);
-	//=====okay=====
-	if (array.size == 1)
+	stack->array.size = count_nums(argc, argv);
+	if (stack->array.size == 1)
 		exit(EXIT_SUCCESS);
-	make_array(argc, argv, &array);
-	if (check_dup(&array) == true)
-	{
-		free(array.array);
-		throw_error();
-	}
-	sort_array(&array);
+	make_array(argc, argv, &stack->array);
+	if (ft_check_dup(&stack->array) == true)
+		throw_error(NULL);
+	ft_check_dup(&stack->array);
+	// ft_print_array(&array);
 }

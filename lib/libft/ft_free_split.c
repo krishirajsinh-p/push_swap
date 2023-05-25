@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/25 11:27:07 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/05/25 09:29:08 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/25 11:19:03 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, t_string argv[])
+void	ft_free_split(t_string split[])
 {
-	t_data	stack;
+	unsigned int	i;
 
-	init_data(&stack);
-	parse(argc, argv, &stack);	//if okay then do &stack.buffer
-	// fill stack a
-	// sort
-	// free_data(&stack);
-	return (EXIT_SUCCESS);
+	i = 0;
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+	split = NULL;
 }

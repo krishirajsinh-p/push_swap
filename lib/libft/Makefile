@@ -6,7 +6,7 @@
 #    By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 21:08:59 by kpuwar            #+#    #+#              #
-#    Updated: 2023/04/28 15:29:29 by kpuwar           ###   ########.fr        #
+#    Updated: 2023/05/25 10:13:55 by kpuwar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,12 @@ SRCS = 	ft_isalpha.c	\
 		ft_putnbr_fd.c	\
 		get_next_line.c	\
 		ft_printf.c		\
-		ft_printf_utils.c
+		ft_printf_utils.c\
+		ft_bubble_sort.c\
+		ft_check_dup.c	\
+		ft_print_array.c\
+		ft_free_split.c	\
+		ft_print_array.c\
 
 SRCSB =	ft_lstnew.c			\
 		ft_lstadd_front.c	\
@@ -73,7 +78,7 @@ CC_FLAGS = -Wall -Wextra -Werror
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	ar rc $(NAME) $(OBJS) 
 
 all: $(NAME)
 

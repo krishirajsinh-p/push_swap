@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_check_dup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/25 11:27:07 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/05/25 09:34:33 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/25 11:21:55 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, t_string argv[])
+bool	ft_check_dup(t_array *array)
 {
-	t_data	stack;
+	unsigned short	i;
+	unsigned short	j;
 
-	init_data(&stack);
-	parse(argc, argv, &stack);	//if okay then do &stack.buffer
-	// fill stack a
-	// sort
-	// free_data(&stack);
-	return (EXIT_SUCCESS);
+	i = 0;
+	while (i < array->size)
+	{
+		j = i + 1;
+		while (j < array->size)
+		{
+			if (array->element[i] == array->element[j])
+			{
+				return (true);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 09:38:52 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/04/28 15:29:01 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/25 11:21:34 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,18 @@ int		ft_putstr(char *s);
 //minitalk
 
 typedef char *	t_string;
+
+//push_swap
+
+typedef struct s_array
+{
+	unsigned short	size;
+	int				*element;
+}					t_array;
+
+bool	ft_check_dup(t_array *array);
+void	ft_free_split(t_string split[]);
+void	ft_bubble_sort(t_array *array);
+void	ft_print_array(t_array *array);
 
 #endif

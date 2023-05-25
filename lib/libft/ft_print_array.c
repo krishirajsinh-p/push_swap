@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_print_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 01:17:29 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/21 18:22:41 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/05/25 09:58:37 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/25 11:23:18 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "libft.h"
 
-void	throw_error(void)
+void	wft_print_array(t_array *array)
 {
-	ft_error(NULL);
-}
+	unsigned int	i;
 
-void	ft_error(t_data *recv_data)
-{
-	static t_data	*data;
-
-	if (recv_data && data == NULL)
-		data = recv_data;
-	else
-	{
-		ft_putendl_fd("ERROR\n", 2);
-		//free data here
-		data = NULL;
-		exit(EXIT_FAILURE);
-	}
+	ft_printf("[%i", array->element[0]);
+	i = 1;
+	while (i < array->size)
+		ft_printf(",%i", array->element[i++]);
+	ft_printf("]\n");
 }
