@@ -53,7 +53,7 @@ SRCS = 	ft_isalpha.c	\
 		ft_check_dup.c	\
 		ft_print_array.c\
 		ft_free_split.c	\
-		ft_print_array.c\
+		ft_print_array.c
 
 SRCSB =	ft_lstnew.c			\
 		ft_lstadd_front.c	\

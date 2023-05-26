@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	wft_print_array(t_array *array)
+void	ft_print_array(t_array *array)
 {
 	unsigned int	i;
 

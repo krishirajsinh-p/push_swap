@@ -49,5 +49,6 @@ void	init_data(t_data *stack)
 	stack->a.top = NULL;
 	stack->b.size = 0;
 	stack->b.top = NULL;
-	free_data(&stack);
+	free_data(stack);
+	stack = NULL;
 }

@@ -49,28 +49,21 @@ static void	make_array(int argc, t_string argv[], t_array *array)
 	
 	array->element = ft_calloc(array->size + 1, sizeof(int));
 	if (array->element == NULL)
-		throw_error();
+		throw_error(NULL);
 	k = 0;
 	i = 1;
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
 		if (split == NULL)
-		{	//if split is null then free array mem and exit with msg
-			free(array->element);
-			throw_error();
-		}
+			throw_error(NULL);
 		j = 0;
 		while (split[j])
 		{
 			if (ft_stoi(split[j++], &array->element[k++]) == false)
-			{	//if stoi is unsuccessfull free array.array and split and throws error before exit
-				free(array->element);
-				ft_free_split(split);
-				throw_error();
-			}
-			ft_free_split(split);	
+				throw_error(split);
 		}
+		ft_free_split(split);
 		i++;
 	}
 }
@@ -88,8 +81,8 @@ static unsigned short	count_nums(int argc, t_string argv[])
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j]) && argv[i][j + 1] == ' '
-			|| argv[i][j + 1] == '\0')
+			if (ft_isdigit(argv[i][j]) && (argv[i][j + 1] == ' '
+			|| argv[i][j + 1] == '\0'))
 				count++;
 			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
 			&& argv[i][j] != '-')
@@ -106,11 +99,11 @@ void	parse(int argc, t_string argv[], t_data *stack)
 	if (argc == 1)
 		exit(EXIT_FAILURE);
 	stack->array.size = count_nums(argc, argv);
-	if (stack->array.size == 1)
+	if (stack->array.size < 2)
 		exit(EXIT_SUCCESS);
 	make_array(argc, argv, &stack->array);
 	if (ft_check_dup(&stack->array) == true)
 		throw_error(NULL);
 	ft_check_dup(&stack->array);
-	// ft_print_array(&array);
+	// ft_print_array(&stack->array);
 }

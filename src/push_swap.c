@@ -21,5 +21,5 @@ int	main(int argc, t_string argv[])
 	// fill stack a
 	// sort
 	// free_data(&stack);
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }
