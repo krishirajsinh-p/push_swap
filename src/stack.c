@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 22:04:38 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 12:40:37 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 15:14:22 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,25 @@ bool	is_stack_sorted(t_stack *stack)
 		node = node->next;
 	}
 	return (true);
+}
+
+void	fill_stack_a(t_stack *stack, t_array *array)
+{
+	int		i;
+	t_node	*itr;
+
+	i = array->size - 1;
+	while (i >= 0)
+		push_node(stack, create_node(array->element[i--], -1, NULL));
+	ft_bubble_sort(array);
+	itr = stack->top;
+	while (itr)
+	{
+		itr->pos = ft_get_index(array, itr->data);
+		itr = itr->next;
+	}
+	free(array->element);
+	array->element = NULL;
 }
 
 void	print_stack(t_stack *stack)	//remove

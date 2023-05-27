@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 09:38:52 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 10:52:44 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 14:48:09 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdbool.h>
+# include <stdint.h>	//remove
 
 //libft
 
@@ -103,5 +104,6 @@ void			ft_free_split(t_string split[]);
 void			ft_bubble_sort(t_array *array);
 void			ft_print_array(t_array *array);
 unsigned int	ft_get_index(t_array *array, int num);
+bool			ft_is_array_sorted(t_array *array);
 
 #endif

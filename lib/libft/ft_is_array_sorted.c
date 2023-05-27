@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_is_array_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 23:59:24 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/05/27 14:46:08 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/27 15:08:54 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, t_string argv[])
+bool	ft_is_array_sorted(t_array *array)
 {
-	t_data	stack;
+	unsigned int	i;
 
-	init_data(&stack);
-	parse(argc, argv, &stack.array);
-	if (ft_is_array_sorted(&stack.array) == true)
-		exit (EXIT_SUCCESS);
-	fill_stack_a(&stack.a, &stack.array);
-	print_stack(&stack.a);	//remove
-	// sort
-	free_data(NULL);
-	exit (EXIT_SUCCESS);
+	if (array->size < 2)
+		return (true);
+	i = 0;
+	while (i < array->size - 1)
+	{
+		if (array->element[i] > array->element[i + 1])
+			return (false);
+		i++;
+	}
+	return (true);
 }

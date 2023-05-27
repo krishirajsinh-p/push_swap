@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:48:02 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 10:45:37 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 14:53:51 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,32 @@ static bool	ft_stoi(t_string str, int *num)
 	return (lln <= INT32_MAX && lln >= INT32_MIN);
 }
 
+static unsigned short	count_nums(int argc, t_string argv[])
+{
+	unsigned short	count;
+	unsigned short	i;
+	unsigned short	j;
+
+	count = 0;
+	i = 1;
+	while (i < argc)
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (ft_isdigit(argv[i][j]) && (argv[i][j + 1] == ' '
+			|| argv[i][j + 1] == '\0'))
+				count++;
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
+			&& argv[i][j] != '-')
+				throw_error(NULL);
+			j++;
+		}
+		i++;
+	}
+	return (count);
+}
+
 static void	make_array(int argc, t_string argv[], t_array *array)
 {
 	t_string		*split;
@@ -68,60 +94,15 @@ static void	make_array(int argc, t_string argv[], t_array *array)
 	}
 }
 
-static unsigned short	count_nums(int argc, t_string argv[])
-{
-	unsigned short	count;
-	unsigned short	i;
-	unsigned short	j;
-
-	count = 0;
-	i = 1;
-	while (i < argc)
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (ft_isdigit(argv[i][j]) && (argv[i][j + 1] == ' '
-			|| argv[i][j + 1] == '\0'))
-				count++;
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' '
-			&& argv[i][j] != '-')
-				throw_error(NULL);
-			j++;
-		}
-		i++;
-	}
-	return (count);
-}
-
-static void	fill_stack_a(t_stack *stack, t_array *array)
-{
-	int		i;
-	t_node	*itr;
-
-	i = array->size - 1;
-	while (i >= 0)
-		push_node(stack, create_node(array->element[i--], -1, NULL));
-	ft_bubble_sort(array);
-	itr = stack->top;
-	while (itr)
-	{
-		itr->pos = ft_get_index(array, itr->data);
-		itr = itr->next;
-	}
-	free(array->element);
-}
-
-void	parse(int argc, t_string argv[], t_data *stack)
+void	parse(int argc, t_string argv[], t_array *array)
 {
 	if (argc == 1)
 		exit(EXIT_FAILURE);
-	stack->array.size = count_nums(argc, argv);
-	if (stack->array.size < 2)
+	array->size = count_nums(argc, argv);
+	if (array->size < 2)
 		exit(EXIT_SUCCESS);
-	make_array(argc, argv, &stack->array);
-	if (ft_check_dup(&stack->array) == true)
+	make_array(argc, argv, array);
+	if (ft_check_dup(array) == true)
 		throw_error(NULL);
-	ft_check_dup(&stack->array);
-	fill_stack_a(&stack->a, &stack->array);
+	ft_check_dup(array);
 }

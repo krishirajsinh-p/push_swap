@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:18:22 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 12:44:27 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 15:19:47 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,37 @@ typedef struct s_data
 	t_array			array;
 }					t_data;
 
+// enums for ops
+// enum	operation
+// {
+// 	sa,
+// 	sb,
+// 	ss,
+// 	pa,
+// 	pb,
+// 	ra,
+// 	rb,
+// 	rr,
+// 	rra,
+// 	rrb,
+// 	rrr
+// };
+void	print_stack(t_stack *stack);	//remove
+
 //data_n_error.c
 void	init_data(t_data *stack);
 void	free_data(t_data *recv_data);
 void	throw_error(t_string split[]);
 
 //parser.c
-void	parse(int argc, t_string argv[], t_data *stack);
+void	parse(int argc, t_string argv[], t_array *array);
 
 //stack.c
 t_node	*create_node(int data, unsigned int pos, t_node *next);
 void	push_node(t_stack *stack, t_node *node);
 t_node	*pop_node(t_stack *stack);
 bool	is_stack_sorted(t_stack *stack);
-
-void	print_stack(t_stack *stack);	//remove
+void	fill_stack_a(t_stack *stack, t_array *array);
 
 //operations.c
 void	cmd_init(t_string cmd, t_data *recv_data);
