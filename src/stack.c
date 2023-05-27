@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 22:04:38 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 10:36:29 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 12:40:37 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,39 @@ t_node	*pop_node(t_stack *stack)
 	}
 	else
 		return (NULL);
+}
+
+bool	is_stack_sorted(t_stack *stack)
+{
+	t_node	*node;
+
+	if (stack->size < 2)
+		return (true);
+	node = stack->top;
+	while (node->next)
+	{
+		if (node->data > node->next->data)
+			return (false);
+		node = node->next;
+	}
+	return (true);
+}
+
+void	print_stack(t_stack *stack)	//remove
+{
+	t_node	*node;
+
+	ft_printf("size: %d\n", stack->size);
+	if (stack->size == 0)
+	{
+		ft_putstr("-> []\n");
+		return ;
+	}
+	node = stack->top;
+	while (node)
+	{
+		ft_printf("-> [%d]", node->data);
+		node = node->next;
+	}
+	ft_putchar('\n');
 }

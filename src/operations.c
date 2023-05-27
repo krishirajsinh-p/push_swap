@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:51:02 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/20 18:58:02 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 12:16:39 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	reverse_rotate(t_stack *stack)
 		itr = itr->next;
 	tmp = itr->next;
 	itr->next = NULL;
-	tmp = stack->top;
+	tmp->next = stack->top;
 	stack->top = tmp;
 }
 
@@ -105,11 +105,6 @@ void	cmd_init2(t_string cmd, t_data *recv_data)
 			rotate(&stack->a);
 		else if (!ft_strncmp(cmd, "rb", 2))
 			rotate(&stack->b);
-		else if (!ft_strncmp(cmd, "rr", 2))
-		{
-			rotate(&stack->a);
-			rotate(&stack->b);
-		}
 		else if (!ft_strncmp(cmd, "rra", 3))
 			reverse_rotate(&stack->a);
 		else if (!ft_strncmp(cmd, "rrb", 3))
@@ -118,6 +113,11 @@ void	cmd_init2(t_string cmd, t_data *recv_data)
 		{
 			reverse_rotate(&stack->a);
 			reverse_rotate(&stack->b);
+		}
+		else if (!ft_strncmp(cmd, "rr", 2))
+		{
+			rotate(&stack->a);
+			rotate(&stack->b);
 		}
 	}
 }
