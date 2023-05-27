@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:18:22 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/25 11:21:20 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 10:24:06 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 typedef struct s_node
 {
 	int				data;
-	int				pos;
+	unsigned int	pos;
 	struct s_node	*next;
 }					t_node;
 
 typedef struct s_stack
 {
-	int				size;
+	unsigned int	size;
 	t_node			*top;
 }					t_stack;
 
@@ -42,5 +42,15 @@ void	throw_error(t_string split[]);
 
 //parser.c
 void	parse(int argc, t_string argv[], t_data *stack);
+
+//stack.c
+t_node	*create_node(int data, unsigned int pos, t_node *next);
+void	push_node(t_stack *stack, t_node *node);
+t_node	*pop_node(t_stack *stack);
+
+//operations.c
+void	cmd_init(t_string cmd, t_data *recv_data);
+void	cmd_init2(t_string cmd, t_data *recv_data);
+void	exec_cmd(t_string cmd);
 
 #endif

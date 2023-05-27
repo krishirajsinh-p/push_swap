@@ -6,7 +6,7 @@
 #    By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 21:08:59 by kpuwar            #+#    #+#              #
-#    Updated: 2023/05/25 10:13:55 by kpuwar           ###   ########.fr        #
+#    Updated: 2023/05/27 10:20:07 by kpuwar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ SRCS = 	ft_isalpha.c	\
 		ft_check_dup.c	\
 		ft_print_array.c\
 		ft_free_split.c	\
-		ft_print_array.c
+		ft_print_array.c\
+		ft_get_index.c
 
 SRCSB =	ft_lstnew.c			\
 		ft_lstadd_front.c	\

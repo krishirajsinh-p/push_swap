@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 09:37:39 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/25 11:22:52 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 10:48:35 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_bubble_sort(t_array *array)
 {
-	int	temp;
-	int	i;
-	int	j;
+	int				temp;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	while (i < array->size - 1)

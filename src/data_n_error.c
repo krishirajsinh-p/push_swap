@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:17:29 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/25 11:25:46 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 10:41:07 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	free_data(t_data *recv_data)
 		if (stack->array.element)
 			free(stack->array.element);
 		stack->array.element = NULL;
-		// while (stack->a.top)
-		// 	//pop nodes	//it decrements size to zero and make top to null
-		// while (stack->b.top)
-		// 	//pop nodes	//it decrements size to zero and make top to null
+		while (stack->a.top)
+			free(pop_node(&stack->a));
+		while (stack->b.top)
+			free(pop_node(&stack->b));
 		stack = NULL;
 	}
 }
@@ -37,7 +37,7 @@ void	throw_error(t_string split[])
 	if (split != NULL)
 		ft_free_split(split);
 	free_data(NULL);
-	ft_putendl_fd("ERROR\n", 2);
+	ft_putendl_fd("ERROR", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -50,5 +50,6 @@ void	init_data(t_data *stack)
 	stack->b.size = 0;
 	stack->b.top = NULL;
 	free_data(stack);
-	stack = NULL;
+	cmd_init("data", stack);
+	cmd_init2("data", stack);
 }

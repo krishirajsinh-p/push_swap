@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:48:02 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/25 11:32:14 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/27 10:45:37 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,24 @@ static unsigned short	count_nums(int argc, t_string argv[])
 	return (count);
 }
 
+static void	fill_stack_a(t_stack *stack, t_array *array)
+{
+	int		i;
+	t_node	*itr;
+
+	i = array->size - 1;
+	while (i >= 0)
+		push_node(stack, create_node(array->element[i--], -1, NULL));
+	ft_bubble_sort(array);
+	itr = stack->top;
+	while (itr)
+	{
+		itr->pos = ft_get_index(array, itr->data);
+		itr = itr->next;
+	}
+	free(array->element);
+}
+
 void	parse(int argc, t_string argv[], t_data *stack)
 {
 	if (argc == 1)
@@ -105,5 +123,5 @@ void	parse(int argc, t_string argv[], t_data *stack)
 	if (ft_check_dup(&stack->array) == true)
 		throw_error(NULL);
 	ft_check_dup(&stack->array);
-	// ft_print_array(&stack->array);
+	fill_stack_a(&stack->a, &stack->array);
 }
