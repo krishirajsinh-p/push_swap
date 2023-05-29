@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:48:02 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 14:53:51 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/28 13:50:46 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	make_array(int argc, t_string argv[], t_array *array)
 	unsigned short	i;
 	unsigned short	j;
 	unsigned short	k;
-	
+
 	array->element = ft_calloc(array->size + 1, sizeof(int));
 	if (array->element == NULL)
 		throw_error(NULL);
@@ -99,8 +99,6 @@ void	parse(int argc, t_string argv[], t_array *array)
 	if (argc == 1)
 		exit(EXIT_FAILURE);
 	array->size = count_nums(argc, argv);
-	if (array->size < 2)
-		exit(EXIT_SUCCESS);
 	make_array(argc, argv, array);
 	if (ft_check_dup(array) == true)
 		throw_error(NULL);

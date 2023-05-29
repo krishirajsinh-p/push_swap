@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:17:29 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 10:41:07 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/28 17:51:32 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	throw_error(t_string split[])
 	if (split != NULL)
 		ft_free_split(split);
 	free_data(NULL);
-	ft_putendl_fd("ERROR", 2);
+	ft_putendl_fd("Error", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -50,6 +50,8 @@ void	init_data(t_data *stack)
 	stack->b.size = 0;
 	stack->b.top = NULL;
 	free_data(stack);
-	cmd_init("data", stack);
-	cmd_init2("data", stack);
+	push_init("data", stack);
+	swap_init("data", stack);
+	rotate_init("data", stack);
+	reverse_rotate_init("data", stack);
 }

@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:18:22 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/27 15:19:47 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/29 03:55:05 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,22 @@
 
 # include "../../lib/libft/libft.h"
 
+# define SA "sa"
+# define SB "sb"
+# define SS "ss"
+# define PA "pa"
+# define PB "pb"
+# define RA "ra"
+# define RB "rb"
+# define RR "rr"
+# define RRA "rra"
+# define RRB "rrb"
+# define RRR "rrr"
+
 typedef struct s_node
 {
 	int				data;
-	unsigned int	pos;
+	unsigned int	t_pos;
 	struct s_node	*next;
 }					t_node;
 
@@ -35,23 +47,6 @@ typedef struct s_data
 	t_array			array;
 }					t_data;
 
-// enums for ops
-// enum	operation
-// {
-// 	sa,
-// 	sb,
-// 	ss,
-// 	pa,
-// 	pb,
-// 	ra,
-// 	rb,
-// 	rr,
-// 	rra,
-// 	rrb,
-// 	rrr
-// };
-void	print_stack(t_stack *stack);	//remove
-
 //data_n_error.c
 void	init_data(t_data *stack);
 void	free_data(t_data *recv_data);
@@ -64,12 +59,22 @@ void	parse(int argc, t_string argv[], t_array *array);
 t_node	*create_node(int data, unsigned int pos, t_node *next);
 void	push_node(t_stack *stack, t_node *node);
 t_node	*pop_node(t_stack *stack);
-bool	is_stack_sorted(t_stack *stack);
 void	fill_stack_a(t_stack *stack, t_array *array);
 
 //operations.c
-void	cmd_init(t_string cmd, t_data *recv_data);
-void	cmd_init2(t_string cmd, t_data *recv_data);
+bool	swap(t_stack *stack);
+bool	push(t_stack *from, t_stack *to);
+bool	rotate(t_stack *stack);
+bool	reverse_rotate(t_stack *stack);
+
+//operations_utils.c
+void	swap_init(t_string cmd, t_data *recv_data);
+void	push_init(t_string cmd, t_data *recv_data);
+void	rotate_init(t_string cmd, t_data *recv_data);
+void	reverse_rotate_init(t_string cmd, t_data *recv_data);
 void	exec_cmd(t_string cmd);
+
+//sort.c
+void	sort(t_data *stack);
 
 #endif

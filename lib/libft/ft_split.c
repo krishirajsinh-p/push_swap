@@ -6,81 +6,75 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:04:40 by kpuwar            #+#    #+#             */
-/*   Updated: 2022/11/22 12:13:49 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/29 02:55:25 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_ptrs(char *s, char c, int len_str)
+size_t	ft_wcount(const char *str, char del)
 {
-	int		i;
-	size_t	count;
+	size_t	i;
+	size_t	wcount;
 
 	i = 0;
-	count = 1;
-	while (i < len_str - 1)
+	wcount = 0;
+	while (str[i])
 	{
-		if (s[i + 1] != c && s[i] == c)
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-static void	delptrs(char **ptr, size_t len)
-{
-	while (len--)
-		free(ptr[len]);
-	free(ptr);
-}
-
-static void	fillptrs(char *str, char c, char **ptr, int len_str)
-{
-	int	end;
-	int	start;
-	int	i;
-
-	end = 0;
-	i = 0;
-	while (end < len_str)
-	{
-		if (str[end] != c)
-		{
-			start = end;
-			while (end < len_str && str[end] != c)
-				end++;
-			ptr[i] = ft_substr(str, start, end - start);
-			if (ptr[i] == NULL)
-			{
-				delptrs(ptr, i);
-				return ;
-			}
+		while (str[i] && (str[i] == del))
 			i++;
-		}
-		end++;
+		if (str[i] && (str[i] != del))
+			wcount++;
+		while (str[i] && (str[i] != del))
+			i++;
 	}
+	return (wcount);
 }
 
-char	**ft_split(char const *s, char c)
+static bool	allocate(char **out, const char *str, char del, \
+				size_t wcount)
 {
-	char	**ptr;
-	char	*str;
-	int		len;
-	int		len_str;
+	size_t	count;
+	size_t	index;
 
-	str = ft_strtrim(s, &c);
+	index = 0;
+	while (*str && index < wcount)
+	{
+		count = 0;
+		while (*str == del && *str)
+			str++;
+		while (str[count] && str[count] != del)
+			count++;
+		out[index] = malloc(sizeof(char) * (count + 1));
+		if (!out[index])
+			return (false);
+		ft_strlcpy(out[index], str, count + 1);
+		str += count;
+		index++;
+	}
+	return (true);
+}
+
+char	**ft_split(const char *str, char del)
+{
+	char	**out;
+	size_t	wcount;
+
 	if (!str)
 		return (NULL);
-	len_str = ft_strlen(str);
-	len = count_ptrs(str, c, len_str);
-	ptr = (char **) ft_calloc(len + 1, sizeof(char *));
-	if (!ptr)
+	wcount = ft_wcount(str, del);
+	out = malloc(sizeof(char *) * (wcount + 1));
+	if (!out)
+		return (NULL);
+	if (!allocate(out, str, del, wcount))
 	{
-		free(str);
+		while (*out)
+		{
+			free(*out);
+			out++;
+		}
 		return (NULL);
 	}
-	fillptrs(str, c, ptr, len_str);
-	free(str);
-	return (ptr);
+	out[wcount] = NULL;
+	return (out);
 }

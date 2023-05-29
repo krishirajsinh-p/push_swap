@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/29 03:59:01 by kpuwar           ###   ########.fr       */
+/*   Created: 2023/05/29 01:42:36 by kpuwar            #+#    #+#             */
+/*   Updated: 2023/05/29 03:19:29 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+// bool	is_stack_sorted(t_stack *stack)
+// {
+// 	t_node	*node;
 
-int	main(int argc, t_string argv[])
-{
-	t_data	stack;
-
-	init_data(&stack);
-	parse(argc, argv, &stack.array);
-	if (ft_is_array_sorted(&stack.array) == true)
-	{
-		free_data(NULL);
-		exit(EXIT_SUCCESS);
-	}
-	fill_stack_a(&stack.a, &stack.array);
-	sort(&stack);	//pending 3 5 and optimisations
-	free_data(NULL);
-	exit(EXIT_SUCCESS);
-}
+// 	if (stack->size < 2)
+// 		return (true);
+// 	node = stack->top;
+// 	while (node->next)
+// 	{
+// 		if (node->data > node->next->data)
+// 			return (false);
+// 		node = node->next;
+// 	}
+// 	return (true);
+// }
