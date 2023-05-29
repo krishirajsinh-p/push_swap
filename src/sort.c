@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 04:53:49 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/29 04:01:18 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/29 04:06:17 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	k_sort1(t_data *stack)
 	k_sort2(stack);
 }
 
-void	sort(t_data *stack)	//add for 3 & 5
+void	sort(t_data *stack)	//add for 3 & 5	//function names renaming
 {
 	if (stack->a.size == 2)
 		exec_cmd(SA);
