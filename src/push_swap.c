@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:33:15 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/29 04:05:16 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/31 14:48:30 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,9 @@ int	main(int argc, t_string argv[])
 	free_data(NULL);
 	exit(EXIT_SUCCESS);
 }
+
+/*
+https://numbergenerator.org/permutations-and-combinations/permutations
+ARG="";
+echo "$ARG" | while IFS= read -r line ; do ./push_swap $line | wc -l; done
+*/
