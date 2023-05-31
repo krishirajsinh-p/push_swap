@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 09:38:52 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/29 02:56:11 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/31 18:53:23 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void *(*f)(void *), void (*del)(void *));
 //get_next_line
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 50000
 # endif
 
 char			*get_next_line(int fd);
@@ -106,5 +106,6 @@ void			ft_bubble_sort(t_array *array);
 void			ft_print_array(t_array *array);
 unsigned int	ft_get_index(t_array *array, int num);
 bool			ft_is_array_sorted(t_array *array);
+int				ft_sqrt(int number);
 
 #endif
