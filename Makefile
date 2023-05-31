@@ -6,7 +6,7 @@
 #    By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 04:33:13 by kpuwar            #+#    #+#              #
-#    Updated: 2023/05/31 19:41:04 by kpuwar           ###   ########.fr        #
+#    Updated: 2023/05/31 21:46:17 by kpuwar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,10 @@ fclean: clean
 
 re: fclean all
 
-bonus: libft $(OBJSB)
+$(BONUS): $(OBJSB)
 	$(CC) $(CFLAGS) $(OBJSB) $(LIBFT)/libft.a -I $(INCLUDESB) -o $(BONUS)
+
+bonus: libft $(BONUS)
 
 cleanb:
 	$(RM) $(OBJSB)
