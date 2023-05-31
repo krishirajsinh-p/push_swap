@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:48:02 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/28 13:50:46 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/31 11:25:17 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	ft_stoi(t_string str, int *num)
 
 	i = 0;
 	lln = 0;
-	*num = 1;
+	(*num) = 1;
 	if ((str[i] == '-' || str[i] == '+') && !ft_isdigit(str[i + 1]))
 		return (false);
 	if (str[i] == '-')
@@ -35,8 +35,8 @@ static bool	ft_stoi(t_string str, int *num)
 			return (false);
 		lln = (lln * 10) + (str[i++] - '0');
 	}
-	lln *= *num;
-	*num = lln;
+	lln *= (*num);
+	(*num) = lln;
 	return (lln <= INT32_MAX && lln >= INT32_MIN);
 }
 
@@ -73,7 +73,7 @@ static void	make_array(int argc, t_string argv[], t_array *array)
 	unsigned short	j;
 	unsigned short	k;
 
-	array->element = ft_calloc(array->size + 1, sizeof(int));
+	array->element = ft_calloc(array->size, sizeof(int));
 	if (array->element == NULL)
 		throw_error(NULL);
 	k = 0;

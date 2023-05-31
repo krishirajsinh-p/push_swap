@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 22:04:38 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/29 04:02:02 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/31 11:49:25 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,20 @@ void	fill_stack_a(t_stack *stack, t_array *array)
 	}
 	free(array->element);
 	array->element = NULL;
+}
+
+bool	is_stack_sorted(t_stack *stack)
+{
+	t_node	*node;
+
+	if (stack->size < 2)
+		return (true);
+	node = stack->top;
+	while (node->next)
+	{
+		if (node->data > node->next->data)
+			return (false);
+		node = node->next;
+	}
+	return (true);
 }

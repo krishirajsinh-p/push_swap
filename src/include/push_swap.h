@@ -6,7 +6,7 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 04:18:22 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/29 03:55:05 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/31 11:49:46 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_node	*create_node(int data, unsigned int pos, t_node *next);
 void	push_node(t_stack *stack, t_node *node);
 t_node	*pop_node(t_stack *stack);
 void	fill_stack_a(t_stack *stack, t_array *array);
+bool	is_stack_sorted(t_stack *stack);
 
 //operations.c
 bool	swap(t_stack *stack);

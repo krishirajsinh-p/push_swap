@@ -6,13 +6,13 @@
 /*   By: kpuwar <kpuwar@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 04:53:49 by kpuwar            #+#    #+#             */
-/*   Updated: 2023/05/29 04:06:17 by kpuwar           ###   ########.fr       */
+/*   Updated: 2023/05/31 13:31:26 by kpuwar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
 
-static int	ft_sqrt(int number)
+static int	ft_sqrt(int number)	//add to libft
 {
 	int	i;
 
@@ -42,9 +42,62 @@ static unsigned int	count_r(t_node *node, unsigned int position)
 	return (counter);
 }
 
-static void	k_sort2(t_data *stack)
+static void	sort3(t_data *stack)
 {
-	while (stack->b.size)
+	int	f;
+	int	s;
+	int	t;
+
+	if (is_stack_sorted(&stack->a))
+		return ;
+	f = stack->a.top->data;
+	s = stack->a.top->next->data;
+	t = stack->a.top->next->next->data;
+	if ((s < t && f > t) || (t < f && f < s))
+	{
+		if (count_r(stack->a.top, 0) == 1)
+			exec_cmd(RA);
+		else
+			exec_cmd(RRA);
+	}
+	else
+	{
+		exec_cmd(SA);
+		sort3(stack);
+	}
+}
+
+static void	sort5(t_data *stack)
+{
+	unsigned int	r;
+	unsigned int	rr;
+	unsigned int	i;
+
+	i = 0;
+	while (stack->a.size != 3)
+	{
+		r = count_r(stack->a.top, 3 + i);
+		rr = stack->a.size - r;
+		while (stack->a.top->t_pos != 3 + i)
+		{
+			if (r > rr)
+				exec_cmd(RRA);
+			else
+				exec_cmd(RA);
+		}
+		exec_cmd(PB);
+		i++;
+	}
+	sort3(stack);
+	while (stack->b.size != 0)
+		exec_cmd(PA);
+	while (!is_stack_sorted(&stack->a))
+		exec_cmd(RA);
+}
+
+static void	k_sort_ctd(t_data *stack)
+{
+	while (stack->b.size != 0)
 	{
 		while (stack->b.top->t_pos != stack->b.size - 1)
 		{
@@ -58,7 +111,7 @@ static void	k_sort2(t_data *stack)
 	}
 }
 
-static void	k_sort1(t_data *stack)
+static void	k_sort(t_data *stack)
 {
 	unsigned int	i;
 	int				k_num;
@@ -81,13 +134,17 @@ static void	k_sort1(t_data *stack)
 		else
 			exec_cmd(RA);
 	}
-	k_sort2(stack);
+	k_sort_ctd(stack);
 }
 
-void	sort(t_data *stack)	//add for 3 & 5	//function names renaming
+void	sort(t_data *stack)
 {
 	if (stack->a.size == 2)
 		exec_cmd(SA);
+	else if (stack->a.size == 3)
+		sort3(stack);
+	else if (stack->a.size <= 5)
+		sort5(stack);
 	else
-		k_sort1(stack);
+		k_sort(stack);
 }
